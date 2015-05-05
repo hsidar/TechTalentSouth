@@ -1,0 +1,30 @@
+body {
+    background: url("http://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg") no-repeat center center fixed;
+    background-size: cover;
+
+}
+
+#content {
+  width: 500px;
+  color: white;
+  border: 2px solid fuchsia;
+  padding: 20px; /* Adds 20px of space to all sides */
+  margin: 20px auto;  /* Adds 20px to the top & bottom & centers left/right */
+}
+
+#moon {
+    width: 200px;
+    float: left;
+    margin-right: 10px;
+}
+
+#footer {
+    width: 500px;
+    margin: auto;
+    height: 20px;
+    border: 10px solid yellow;
+    background-color: blue;
+    padding: 20px;
+    color: white;
+    font-size: 12px;
+}
