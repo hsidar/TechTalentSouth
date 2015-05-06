@@ -1,0 +1,15 @@
+<h1>Welcome to my Travel Site</h1>
+<p>This is my very awesome travel site.</p>
+
+<p>I am from <%= @homeland %> ... ish.</p>
+
+
+<ul>
+<% @countries.each do |country| %>
+  <li><%= country %></li>
+<% end %>
+</ul>
+
+<% @toilets.each do |toilet| %>
+<%= image_tag toilet, id: "toilet" %>
+<% end %>

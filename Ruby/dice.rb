@@ -26,12 +26,14 @@ All bets that the shooter would "pass" are now bets that the shooter will re-rol
 
 All bets that the shooter would "crap" are bets that 7 will be rolled first.
 
-If player gets to 100$, then they win.
+First roll resolution makes people happy. Constant rerolls make people hostile and can lead to choreographed dance-offs, knife fights, and hurt feelings.
 
+If player gets to 100$, then they win.
 
 '
     
     @money = 25
+    @hostility = 10
     @first_turn_flag = 0
     @point = 0
     @bet = 0
@@ -45,10 +47,12 @@ If player gets to 100$, then they win.
 
   def take_bet
     
-    puts "What's it gonna be? Pass or Crap?" if @choice == ""
+    puts "
+What's it gonna be? Pass or Crap?" if @choice == ""
     @choice = test_choice if @choice == ""
 
-    puts "How much you wanna put on it? Remaining funds $#{@money}" if @bet == 0
+    puts "
+How much you wanna put on it? Remaining funds $#{@money}" if @bet == 0
     @bet = test_bet if @bet == 0
 
     roll_dice
@@ -66,7 +70,8 @@ If player gets to 100$, then they win.
     elsif @choice[0] == "c"
       return "crap"
     else
-      puts "That isn't a choice ... try again."
+      puts "
+That isn't a choice ... try again."
       @choice = ""
       take_bet
     end
@@ -77,16 +82,19 @@ If player gets to 100$, then they win.
   
   def test_bet
     
-    @bet = gets.chomp.to_i
+    @bet = gets.chomp.tr('$', '').to_i
     
     if @bet <= 0
-      puts "That isn't any kind of bet. You gotta pay to play!"
+      puts "
+That isn't any kind of bet. You gotta pay to play!"
       take_bet
     elsif @bet > @money
-      puts "You must be trying to hustle me. You don't have that kind of money! Make a real bet."
+      puts "
+You must be trying to hustle me. You don't have that kind of money! Make a real bet."
       @bet = 0
       take_bet
     else
+      @money -= @bet
       return @bet
     end
     
@@ -116,15 +124,20 @@ If player gets to 100$, then they win.
     if @first_turn_flag == 0
       case number
         when 7, 11
-          puts "#{preface}. BOOM. Pass on the first try!!#{postface}"
+          puts "
+#{preface}. BOOM. Pass on the first try!!#{postface}"
+          @hostility = 10
           gets
           ante_up("pass")
         when 2, 3, 12
-          puts "#{preface}!! The roll crapped out!#{postface}"
+          puts "
+#{preface}!! The roll crapped out!#{postface}"
+          @hostility = 10
           gets
           ante_up("crap")
         when 4..10
-          puts "#{preface}. Looks like a Point game! The point is #{number}. Play through.#{postface}"
+          puts "
+#{preface}. Looks like a Point game! The point is #{number}. Play through.#{postface}"
           gets
           @point = number
           @first_turn_flag = 1
@@ -133,15 +146,19 @@ If player gets to 100$, then they win.
     else
       case number
         when @point
-          puts "#{preface}!! The Point was hit! Time to ante up!#{postface}"
+          puts "
+#{preface}!! The Point was hit! Time to ante up!#{postface}"
           gets
           ante_up("pass")
         when 7
-          puts "#{preface}! Looks like the craps have it.#{postface}"
+          puts "
+#{preface}! Looks like the craps have it.#{postface}"
           gets
           ante_up("crap")
         else
-          puts "#{preface}! ... Doesn't mean anything. Rollin' on!#{postface}"
+          puts "
+#{preface}! ... Doesn't mean anything. Rollin' on!#{postface}"
+          @hostility -= 1 if @hostility >=1
           gets
           roll_dice
       end 
@@ -155,17 +172,19 @@ If player gets to 100$, then they win.
     if @choice == "pass"
       if decision == "pass"
         @money += @bet * 2
-        puts "PASS!! YOU WON $#{@bet * 2}"
+        puts "
+PASS!! YOU WON $#{@bet}"
       else
-        @money -= @bet
-        puts "CRAP!! YOU LOST $#{@bet}"
+        puts "
+CRAP!! YOU LOST $#{@bet}"
       end
     elsif decision == "crap"
         @money += @bet * 2
-        puts "CRAP!! YOU WON $#{@bet * 2}"
+        puts "
+CRAP!! YOU WON $#{@bet}"
     else
-        @money -= @bet
-        puts "PASS!! YOU LOST $#{@bet}"
+        puts "
+PASS!! YOU LOST $#{@bet}"
     end
     
     game_over?
@@ -173,11 +192,29 @@ If player gets to 100$, then they win.
   end
   
   def game_over?
+    
+    knives = rand(@hostility)
+    
     if @money <= 0
-      puts "YOU ARE BROKE AS HELL."
+      puts "
+
+YOU ARE BROKE AS HELL. WALK AWAY.
+
+"
       exit
     elsif @money >= 100
-      puts "YOU HAVE ALL THE MONEY. GOOD LUCK GETTING HOME SAFELY."
+      puts "
+
+YOU HAVE ALL THE MONEY. GOOD LUCK GETTING HOME SAFELY.
+
+"
+      exit
+    elsif knives == rand(@hostility)
+      puts "
+
+A KNIFE FIGHT BROKE OUT. YOU HAVE BEEN STABBED AND ROBBED. GOOD DAY.
+
+"
       exit
     else
       continue_playing?
@@ -186,7 +223,8 @@ If player gets to 100$, then they win.
 
   def continue_playing?
     
-    puts "Keep playing? y/n"
+    puts "
+Keep playing? y/n (Remaining funds $#{@money})"
     continue = gets.chomp
     
     if continue == "y"
@@ -200,12 +238,15 @@ If player gets to 100$, then they win.
       
     elsif continue == "n"
       
-      puts "YOU WALK AWAY WITH $#{@money} HAVING NOT SEEN YOUR QUEST THROUGH TO IT'S INEVITABLY BITTER END."
+      puts "
+
+YOU WALK AWAY WITH $#{@money} HAVING NOT SEEN YOUR QUEST THROUGH TO IT'S INEVITABLY BITTER END."
       exit
       
     else
       
-    puts "That isn't a choice."
+    puts "
+That isn't a choice."
     continue_playing?
       
     end  
