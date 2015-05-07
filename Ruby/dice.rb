@@ -34,7 +34,7 @@ If player gets to 100$, then they win.
     
     @money = 25
     @hostility = 10
-    @first_turn_flag = 0
+    @first_turn_flag = true
     @point = 0
     @bet = 0
     @choice = ""
@@ -121,7 +121,7 @@ You must be trying to hustle me. You don't have that kind of money! Make a real 
     preface = "#{results[0]} and #{results[1]}. That's #{number}"
     postface = "\nPress Enter to Continue"
     
-    if @first_turn_flag == 0
+  if @first_turn_flag == true
       case number
         when 7, 11
           puts "
@@ -140,7 +140,7 @@ You must be trying to hustle me. You don't have that kind of money! Make a real 
 #{preface}. Looks like a Point game! The point is #{number}. Play through.#{postface}"
           gets
           @point = number
-          @first_turn_flag = 1
+          @first_turn_flag = false
           roll_dice
       end
     else
@@ -229,7 +229,7 @@ Keep playing? y/n (Remaining funds $#{@money})"
     
     if continue == "y"
       
-    @first_turn_flag = 0
+    @first_turn_flag = true
     @point = 0
     @bet = 0
     @choice = ""
