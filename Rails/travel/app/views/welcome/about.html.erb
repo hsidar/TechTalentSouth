@@ -7,10 +7,10 @@
 <% end %>
 <style>
   body {
-    background: <%= @color %>;
+    color: <%= @color %>;
   }
 </style>
 
-<%= link_to "Travel", root_path, class: "navbar-brand" %>
-
 <%= link_to "Blue", {controller: "welcome", action: "about", color: "blue"}, class: "btn btn-primary" %>
+<%= link_to "White", {controller: "welcome", action: "about", color: "white"}, class: "btn btn-primary" %>
+<%= link_to "Yellow", {controller: "welcome", action: "about", color: "yellow"}, class: "btn btn-primary" %>

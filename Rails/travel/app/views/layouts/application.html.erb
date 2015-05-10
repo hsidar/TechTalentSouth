@@ -8,6 +8,7 @@
   <title>Travel</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet' type='text/css'>
  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -15,10 +16,19 @@
 </head>
   
 <body>
+  
+  <style>
+  .navbar-default .navbar-brand {
+  font-family: Papyrus, 'Marck Script', cursive;
+  color: #000;
+}
+  </style>
 
    <div class="container">
     <%= yield %>
   </div>
-
+<%= link_to "Home", root_path, class: "navbar-brand" %>
+<%= link_to "About", about_path, class: "navbar-brand" %>
+<%= link_to "Contact", contact_path, class: "navbar-brand" %>
 </body>
 </html>
