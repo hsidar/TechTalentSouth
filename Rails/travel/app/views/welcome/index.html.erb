@@ -11,5 +11,7 @@
 </ul>
 
 <% @toilets.each do |toilet| %>
-<%= image_tag toilet, id: "toilet" %>
+<%= image_tag toilet, class: "img-responsive" %>
 <% end %>
+
+<%= link_to "About", about_path, class: "navbar-brand" %>

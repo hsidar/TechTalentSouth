@@ -10,3 +10,7 @@
     background: <%= @color %>;
   }
 </style>
+
+<%= link_to "Travel", root_path, class: "navbar-brand" %>
+
+<%= link_to "Blue", {controller: "welcome", action: "about", color: "blue"}, class: "btn btn-primary" %>
