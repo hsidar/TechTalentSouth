@@ -1,0 +1,20 @@
+
+<% if notice != nil %>
+<p class="alert alert-warning alert-dismissible" role="alert">
+  <%= notice %>
+  <button type="button" class="close" data-dismiss="alert">&times;</button></p>
+<% end %>
+
+
+<h1><%= @destination.city %>, <%= @destination.country %></h1>
+<h2>Population <%= @destination.population %></h2>
+<p> <%= @destination.description %></p>
+<%  if @destination.avatar_file_name %>
+<%= image_tag @destination.avatar.url, class: "img-responsive" %>
+<% end %>
+</br>
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_destination_path(@destination), class: "btn btn-default" %> 
+  <%= link_to 'Back', destinations_path, class: "btn btn-default" %>
+</div>
