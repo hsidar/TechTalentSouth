@@ -7,10 +7,8 @@ Rails.application.routes.draw do
   resources :teachers
   
   resources :students
-  
-  get 'welcome/index'
 
-  get 'welcome/show'
+  get 'show' => 'welcome#show'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
