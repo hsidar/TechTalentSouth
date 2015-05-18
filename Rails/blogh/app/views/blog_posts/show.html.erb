@@ -1,19 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog_post.title %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= @blog_post.title %>
+  </div>
+  <div class="panel-body">
+   <p>
+    Written by: <%= @blog_post.author %> on
+    <%= @blog_post.updated_at %>
+    </p>
+    <p>
+    <%= @blog_post.blog_entry %>
+    </p>
+  </div>
+</div>
+<%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-default" %>
 
-<p>
-  <strong>Author:</strong>
-  <%= @blog_post.author %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+  <h4>Comments</h4>
+  </div>
+  <% @blog_post.comments.each do |comment| %>
+  <div class="panel-body">
+    <p><strong><%= comment.author %></strong> said: </p>
+    <p><%= comment.comment_entry %></p>
+    <%= comment.updated_at %>
+  </div>
+  <% end %>
+</div>
 
-<p>
-  <strong>Blog entry:</strong>
-  <%= @blog_post.blog_entry %>
-</p>
+<div class="panel panel-success">
+<div class="panel-heading">
+Make a comment
+</div>
+<div class="panel-body">
+<%= render 'comments/form' %>
+</div>
+</div>
 
-<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
-<%= link_to 'Back', blog_posts_path %>
+<%= link_to 'Back', blog_posts_path, class: "btn btn-default" %>
