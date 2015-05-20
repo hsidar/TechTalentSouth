@@ -14,17 +14,19 @@
  *= require_self
  */
 
-.cant-see-me {
-  
-  display:none;
-}
+
 
 body {
   background-image: url("http://photos-for-you.com/wp-content/uploads/2011/08/Sky-6-Sepia.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: Papyrus;
 }
 
 .panel{
   opacity: 0.7;
+}
+
+.invisible {
+display: none;
 }

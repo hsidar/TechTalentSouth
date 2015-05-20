@@ -6,14 +6,15 @@
   </div>
   <div class="panel-body">
    <p>
-    Written by: <%= @blog_post.author %> on
-    <%= @blog_post.updated_at %>
+     Written by: <%= link_to @blog_post.user.username, user_profile_path(id: @blog_post.user.id) %> on
+     <%= @blog_post.created_at %>
     </p>
     <p>
     <%= @blog_post.blog_entry %>
     </p>
   </div>
 </div>
+
 <%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-default" %>
 
 <div class="panel panel-default">
@@ -22,7 +23,7 @@
   </div>
   <% @blog_post.comments.each do |comment| %>
   <div class="panel-body">
-    <p><strong><%= comment.author %></strong> said: </p>
+    <p><strong><%= link_to comment.user.username, user_profile_path(id: comment.user.id) %></strong> said: </p>
     <p><%= comment.comment_entry %></p>
     <%= comment.updated_at %>
   </div>

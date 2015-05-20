@@ -2,30 +2,7 @@
 
 <h1>Listing Blog Posts</h1>
 
+<p>Welcome <%= current_user.username %>!</p>
 
-<div class="row">
-    <% @blog_posts.each do |blog_post| %>
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= link_to blog_post.title, blog_post %>
-          </div>
-          <div class="panel-body">
-            <%= blog_post.author %>
-            <%= blog_post.blog_entry[0..250] %>
-            <% if blog_post.blog_entry.length > 250 %>
-            <%= link_to " ... [READ MORE]", blog_post %>
-            <% end %>
-          </div>
-          <div class="panel-footer">
-            <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %>   
-            <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-          </div>
-        </div>
-      </div>  
-  <% end %>
-</div>
-  
-</br>
 
-<%= link_to 'New Blog post', new_blog_post_path %>
+<%= render 'display' %>

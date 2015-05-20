@@ -1,0 +1,22 @@
+ 
+   <div class="row">
+    <% @blog_posts.each do |blog_post| %>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <p><%= link_to blog_post.title, blog_post %> by <%= link_to blog_post.user.username, user_profile_path(id: blog_post.user.id) %></p>
+          </div>
+          <div class="panel-body">
+            <%= blog_post.blog_entry[0..250] %>
+            <% if blog_post.blog_entry.length > 250 %>
+            <%= link_to " ... [READ MORE]", blog_post %>
+            <% end %>
+          </div>
+          <div class="panel-footer">
+            <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %>   
+            <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>  
+  <% end %>
+</div>
