@@ -5,13 +5,22 @@
   <button type="button" class="close" data-dismiss="alert">&times;</button></p>
 <% end %>
 
-
 <h1><%= @destination.city %>, <%= @destination.country %></h1>
 <h2>Population <%= @destination.population %></h2>
 <p> <%= @destination.description %></p>
+<p><%= @destination.description %></p>
 <%  if @destination.avatar_file_name %>
 <%= image_tag @destination.avatar.url, class: "img-responsive" %>
 <% end %>
+
+<%= javascript_tag do %>
+   latitude = '<%= j @destination.latitude.to_s %>';
+   longitude = '<%= j @destination.longitude.to_s %>';
+   address = '<%= j @destination.address %>';
+   description = '<%= j @destination.description %>';
+<% end %>
+
+<div id="destination-map"></div>
 </br>
 
 <div class="btn-group">

@@ -1,0 +1,16 @@
+<h1>Your <%= @tweet_brand %> feed</h1>
+<p>Hello, @<%= current_user.username %></p>
+<p>Here is what your friends are saying:</p>
+
+<% if @following_tweets.length > 0 %>
+  <div>
+    <% @following_tweets.each do |t| %>
+    <div>
+      <p><%= t.message %></p>
+      <p><strong><em><%= t.user.username %></em></strong></p>
+    </div>
+    <% end %>
+  </div>
+<% else %>
+<p>You are not following anyone. No one is saying anything. You are not a winner.</p>
+<% end %>

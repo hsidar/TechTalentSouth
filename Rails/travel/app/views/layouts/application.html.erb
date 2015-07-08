@@ -8,8 +8,9 @@
   <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" %>
   <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" %> 
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_api_key'] %>">
+ </script>
   
   
   <title>Travel</title>
@@ -19,7 +20,7 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </head>
-  
+
 <body>
   
   <nav class="navbar navbar-default">

@@ -35,6 +35,7 @@ class DestinationsController < ApplicationController
   def create
     @destination = Destination.new(destination_params)
 
+    
     respond_to do |format|
       if @destination.save
         format.html { redirect_to @destination, notice: 'Destination was successfully created.' }
@@ -78,6 +79,6 @@ class DestinationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def destination_params
-      params.require(:destination).permit(:city, :country, :description, :population, :avatar)
+      params.require(:destination).permit(:city, :country, :description, :population, :avatar, :latitude, :longitude, :address)
     end
 end

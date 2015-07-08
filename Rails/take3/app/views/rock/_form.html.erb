@@ -1,0 +1,15 @@
+<%= form_tag("/rock", method: "post") do %>
+  <div class="field">
+    <%= label :artist, "Artist name" %><br>
+    <%= text_field_tag(:artist) %>
+  </div>
+  <div class="field">
+    <%= label :song, "Song name" %><br>
+    <%= text_field_tag(:song) %>
+  </div>
+  <div class="field">
+    <%= label :album, "Album name" %><br>
+    <%= text_field_tag(:album) %>
+  </div>
+<%= submit_tag("Submit") %>
+<% end %>
